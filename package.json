@@ -1,0 +1,19 @@
+{
+  "name": "slides-mdx-deck",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck src/deck.mdx",
+    "start-slides": "mdx-deck src/slides.mdx",
+    "build": "mdx-deck build src/deck.mdx -d dist/deck/",
+    "build-slides": "mdx-deck build src/slides.mdx -d dist/slides/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "mdx-deck": "^1.5.14"
+  }
+}
