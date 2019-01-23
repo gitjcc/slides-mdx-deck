@@ -1,0 +1,132 @@
+export { dark as theme } from 'mdx-deck/themes'
+
+# 使用 Netlify 构建和部署你的静态资源
+
+<div>By 贾超超</div>
+
+---
+
+# 静态资源
+
+- blog
+- slides
+
+---
+
+# blog
+
+- 博客网站
+- 自建网站
+- 托管静态资源
+
+---
+
+# 静态资源生成器
+
+- [Jekyll](https://github.com/jekyll/jekyll)
+- [Hexo](https://github.com/hexojs/hexo)
+- [Hugo](https://github.com/gohugoio/hugo)
+- [Gatsby](https://github.com/gatsbyjs/gatsby)
+- etc.
+
+---
+
+# jamstack
+
+- [jamstack](https://jamstack.org/)
+- [staticgen](https://www.staticgen.com/)
+- [headlesscms](https://headlesscms.org/)
+
+---
+
+# Hugo
+
+啥是 Hugo
+
+- [Hugo](https://github.com/gohugoio/hugo)
+
+---
+
+# 托管静态资源
+
+- [Github Pages](https://pages.github.com/)
+- [Coding Pages](https://coding.net/pages)
+- [Netlify](https://www.netlify.com)
+- 对象存储
+- etc.
+
+---
+
+# Netlify
+
+啥是 Netlify
+
+- [Netlify](https://www.netlify.com)
+
+---
+
+# Hugo 与 Netlify 结合
+
+---
+
+# slides
+
+- ppt/pptx
+- key
+- [impress.js](https://github.com/impress/impress.js)
+- [reveal.js](https://github.com/hakimel/reveal.js)
+- [pandoc](https://github.com/jgm/pandoc)
+- [mdx-deck](https://github.com/jxnblk/mdx-deck)
+
+---
+
+# mdx-deck
+
+啥是 mdx-deck
+
+- markdown
+- jsx
+- [mdx](https://github.com/mdx-js/mdx)
+- [mdx-deck](https://github.com/jxnblk/mdx-deck)
+
+---
+
+# Mdx-deck 与 Netlify 结合
+
+- Mdx-deck 生成 slides
+- Netlify 执行构建并部署
+
+---
+
+# Mdx-deck + Netlify
+
+```bash
+# NPM scripts
+"scripts": {
+  "build": "mdx-deck build [path-to-file] -d [dest-folder]",
+}
+
+# Netlify
+npm run build
+```
+
+---
+
+# 多个 slides
+
+```bash
+# Build
+mdx-deck build src/[filename].mdx -d dist/[filename]/
+
+# NPM scripts
+"scripts": {
+  "build": "node build/index.js",
+}
+
+# Netlify
+npm run build
+```
+
+---
+
+谢谢大家！
