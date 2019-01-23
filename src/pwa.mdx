@@ -1,0 +1,228 @@
+export { dark as theme } from 'mdx-deck/themes'
+
+# PWA
+
+是 Web 的未来，还是 APP 的未来？
+
+<div>By 贾超超</div>
+
+---
+
+# Progressive Web App
+
+PWA 全称是 Progressive Web Apps，即渐进式网页应用，是提升网页应用的体验的一系列技术的总称。
+
+---
+
+# Web 面临的问题
+
+与 Native App 相比，Web App 有几个明显的弱点。
+
+- 不能离线使用
+- 没有独立的入口
+- 无法推送消息
+
+---
+
+# PWA 的特点
+
+PWA 的本质还是 Web App，只是通过增加一系列的新技术以具备 Native App 的一些特性，它在 Web App 的基础上还具有以下优点
+
+- Reliable（可靠）：即使在不稳定的网络环境下，也能瞬间加载并展现。
+- Fast（快速）：快速响应，并且有平滑的动画响应用户的操作。
+- Engaging（有吸引力）：像设备上的原生应用，具有沉浸式的用户体验，用户可以添加到桌面
+
+---
+
+# 相关文档
+
+- [https://developers.google.com/web/progressive-web-apps/](https://developers.google.com/web/progressive-web-apps/)
+- [https://developer.mozilla.org/zh-CN/docs/Web/Apps/Progressive](https://developer.mozilla.org/zh-CN/docs/Web/Apps/Progressive)
+
+---
+
+## PWA 的关键技术
+
+如前所述 PWA 不是某一项技术，而是一系列技术的总称。其中主要包括
+
+- Web App Manifest（Web 应用程序清单）
+- Service Worker（服务工作者）
+- Push & Notification（推送和通知）
+
+---
+
+# Web App Manifest
+
+![manifest.json](https://user-gold-cdn.xitu.io/2018/1/27/16137ef7c13fbe12?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+---
+
+# 查看更多配置项
+
+[https://developer.mozilla.org/zh-CN/docs/Web/Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
+
+---
+
+# Service Worker
+
+Service Workers 是一个独立的进程，充当 Web 应用与浏览器之间的代理服务器，或在网络可用时作为浏览器和网络间的代理。
+
+- 离线（Fetch API）
+- 缓存静态资源（Cache API）
+- 使用缓存的静态资源
+- 更新静态缓存资源
+- 推送和通知（Push & Notification）
+
+---
+
+# Service Worker
+
+<img src={require("file-loader!./images/sw.png")}/>
+
+---
+
+# Service Worker 生命周期
+
+Service Worker 的生命周期大致可以分为四个阶段。
+
+- Parse 解析
+- Install 安装
+- Activate 激活
+- Redundant 废弃
+
+---
+
+# Service Worker 生命周期
+
+![](https://user-gold-cdn.xitu.io/2018/1/27/16137ef9519812a6?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+---
+
+# Push & Notification
+
+推送通知是 Native APP 中最重要的能力之一，通过增加 Push API 和 Notification API 技术的出现，现在 Web APP 也有推送通知的能力。
+
+- Push API：服务器端将更新的信息传递给 PWA。
+- Notification API：PWA 将更新的信息推送给用户。
+
+---
+
+# Web Push
+
+<img src={require("file-loader!./images/webpush.png")}/>
+
+---
+
+# 订阅
+
+![](https://user-gold-cdn.xitu.io/2018/3/6/161fb4eccdb7fa01?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+---
+
+# 推送
+
+![](https://user-gold-cdn.xitu.io/2018/3/6/161fb4ecce21ca23?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+---
+
+# Push Service
+
+不同的浏览器可以使用不同的 Push Service，但都遵循[Web Push Protocol](https://link.juejin.im/?target=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Fdraft-ietf-webpush-protocol-12)
+
+---
+
+# Web Notification
+
+使用 Push 来向用户推送信息，并在 Service Worker 中直接调用 Notification API 来展示该信息的提醒框。这样，即使是在用户关闭该 Web App 时，依然可以收到提醒，类似于 Native 中的消息推送与提醒。
+
+---
+
+# App Shell 模型
+
+![App Shell 模型](https://developers.google.cn/web/fundamentals/architecture/images/appshell.png?hl=zh-cn)
+
+---
+
+# PWA 开发工具
+
+Service Worker 涉及到的接口繁多，为了方便使用，Service Worker 开发团队创建了 Workbox 库，它能将许多常用的、强大的 Service worker 模式封装到易于使用的 API 中。
+
+- Workbox：[https://developers.google.com/web/tools/workbox/](https://developers.google.com/web/tools/workbox/)
+- 测试 Service Worker：[https://github.com/pinterest/service-workers/tree/master/packages/service-worker-mock](https://github.com/pinterest/service-workers/tree/master/packages/service-worker-mock)
+
+---
+
+# PWA 开发工具
+
+Lighthouse 是 Google 开源的自动化检查工具，用于检查 PWA 中的代码质量，并给出提高 PWA 的体验的建议。
+
+- lighthouse：[https://developers.google.com/web/tools/lighthouse/](https://developers.google.com/web/tools/lighthouse/)
+- lighthouse 图形展示：[https://github.com/paulirish/pwmetrics](https://github.com/paulirish/pwmetrics)
+
+---
+
+# PWA 开发工具
+
+推送通知的实现也是比较繁琐的事情，还好有 web-push 工具。
+
+- web-push 库：[https://github.com/web-push-libs/web-push](https://github.com/web-push-libs/web-push)
+
+---
+
+# PWA 的应用
+
+- [Twitter Lite](https://mobile.twitter.com/)
+- [微博 Lite](https://m.weibo.cn/)
+- [豆瓣 手机版](https://m.douban.com/)
+- [m.alibaba.com](https://m.alibaba.com/)
+- [flipkart lite](https://www.flipkart.com)
+- [Hacker News readers](https://github.com/tastejs/hacker-news-pwas)
+
+---
+
+# 更多案例
+
+- [awesome-pwa](https://github.com/hemanth/awesome-pwa)
+- [https://developers.google.cn/web/showcase/](https://developers.google.cn/web/showcase/)
+
+---
+
+# PWA 的生态
+
+- [https://caniuse.com/#feat=web-app-manifest](https://caniuse.com/#feat=web-app-manifest)
+- [https://caniuse.com/#feat=serviceworkers](https://caniuse.com/#feat=serviceworkers)
+- [https://caniuse.com/#feat=notifications](https://caniuse.com/#feat=notifications)
+- [https://caniuse.com/#feat=push-api](https://caniuse.com/#feat=push-api)
+
+---
+
+# Web
+
+PWA 是不是 Web 的未来？
+
+---
+
+# APP
+
+PWA 是不是 APP 的未来？
+
+---
+
+# 平台
+
+- 移动端：Android、iOS 两大平台
+- PC 端：Windows、macOS、Linux 三大平台
+
+---
+
+# 解决方案比较
+
+- PWA
+- 小程序
+- 轻应用
+- flutter
+- React Native
+
+---
+
+谢谢大家！
