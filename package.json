@@ -1,17 +1,19 @@
 {
   "name": "slides-mdx-deck",
   "version": "1.0.0",
-  "description": "",
+  "description": "build slides with mdx-deck",
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck src/deck.mdx",
     "build": "node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "gitjcc",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "mdx-deck": "^1.5.14"
+    "ejs": "^2.6.1",
+    "file-loader": "^3.0.1",
+    "mdx-deck": "^1.8.2"
   }
 }

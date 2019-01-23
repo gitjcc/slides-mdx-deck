@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Slides</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .slides {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>slides:</h1>
+    <ul class="slides">
+      <% slideNames.forEach(function(slideName){ %>
+      <li><a href="./<%= slideName %>"> <%= slideName %> </a></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
