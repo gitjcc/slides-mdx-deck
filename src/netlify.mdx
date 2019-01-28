@@ -6,16 +6,23 @@ export { dark as theme } from 'mdx-deck/themes'
 
 ---
 
-# 静态资源
+# 啥是静态资源
 
-- blog
-- slides
+- html、js、css、image、etc.
+
+非服务器动态运行生成的文件。
+
+---
+
+# 内容提要
+
+本次分享围绕 blog、html-slides 的构建和部署展开。
 
 ---
 
 # blog
 
-- 博客网站
+- 博客平台
 - 自建网站
 - 托管静态资源
 
@@ -26,12 +33,13 @@ export { dark as theme } from 'mdx-deck/themes'
 - [Jekyll](https://github.com/jekyll/jekyll)
 - [Hexo](https://github.com/hexojs/hexo)
 - [Hugo](https://github.com/gohugoio/hugo)
-- [Gatsby](https://github.com/gatsbyjs/gatsby)
 - etc.
 
 ---
 
 # jamstack
+
+JavaScript + APIs + Markup
 
 - [jamstack](https://jamstack.org/)
 - [staticgen](https://www.staticgen.com/)
@@ -40,8 +48,6 @@ export { dark as theme } from 'mdx-deck/themes'
 ---
 
 # Hugo
-
-啥是 Hugo
 
 - [Hugo](https://github.com/gohugoio/hugo)
 
@@ -59,22 +65,24 @@ export { dark as theme } from 'mdx-deck/themes'
 
 # Netlify
 
-啥是 Netlify
-
 - [Netlify](https://www.netlify.com)
 
 ---
 
 # Hugo 与 Netlify 结合
 
+- Hugo 生成 blog
+- Netlify 执行构建并部署
+
 ---
 
 # slides
 
 - ppt/pptx
-- key
+- keynote
 - [impress.js](https://github.com/impress/impress.js)
 - [reveal.js](https://github.com/hakimel/reveal.js)
+- [slides.com](https://slides.com)
 - [pandoc](https://github.com/jgm/pandoc)
 - [mdx-deck](https://github.com/jxnblk/mdx-deck)
 
@@ -82,7 +90,7 @@ export { dark as theme } from 'mdx-deck/themes'
 
 # mdx-deck
 
-啥是 mdx-deck
+markdown + jsx
 
 - markdown
 - jsx
@@ -126,6 +134,10 @@ mdx-deck build src/[filename].mdx -d dist/[filename]/
 # Netlify
 npm run build
 ```
+
+---
+
+交流时间...
 
 ---
 
