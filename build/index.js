@@ -10,7 +10,7 @@ const distPath = 'dist';
 const fileReg = /(?!.*\\).*\.mdx$/; // 文件名，带后缀
 const fileNameReg = /(?!.*\\).*(?=\.mdx$)/; // 文件名，不带后缀
 
-// 遍历 src 文件
+// 遍历 src 文件夹
 const files = fs.readdirSync(srcPath);
 const slideNames = files.reduce((acc, file) => {
   const fileFullName = (file.match(fileReg) || [])[0];
