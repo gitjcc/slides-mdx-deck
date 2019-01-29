@@ -10,7 +10,11 @@ export { dark as theme } from 'mdx-deck/themes'
 
 - html、js、css、image、etc.
 
-非服务器动态运行生成的文件。
+---
+
+# 啥是静态资源
+
+- 非服务器动态生成的文件
 
 ---
 
@@ -20,11 +24,23 @@ export { dark as theme } from 'mdx-deck/themes'
 
 ---
 
-# blog
+# Blog
+
+搭建个人博客的三个阶段
 
 - 博客平台
 - 自建网站
 - 托管静态资源
+
+---
+
+# 托管静态资源
+
+- [Github Pages](https://pages.github.com/)
+- [Coding Pages](https://coding.net/pages)
+- [Netlify](https://www.netlify.com)
+- 对象存储
+- etc.
 
 ---
 
@@ -34,6 +50,8 @@ export { dark as theme } from 'mdx-deck/themes'
 - [Hexo](https://github.com/hexojs/hexo)
 - [Hugo](https://github.com/gohugoio/hugo)
 - etc.
+
+[staticgen](https://www.staticgen.com/)
 
 ---
 
@@ -49,23 +67,43 @@ JavaScript + APIs + Markup
 
 # Hugo
 
-- [Hugo](https://github.com/gohugoio/hugo)
+The world’s fastest framework for building websites
+
+- 速度快
+- 使用方便
+
+[Hugo - github](https://github.com/gohugoio/hugo)
 
 ---
 
-# 托管静态资源
+# Hugo
 
-- [Github Pages](https://pages.github.com/)
-- [Coding Pages](https://coding.net/pages)
-- [Netlify](https://www.netlify.com)
-- 对象存储
-- etc.
+[Quick Start](https://gohugo.io/getting-started/quick-start/)
 
 ---
 
 # Netlify
 
-- [Netlify](https://www.netlify.com)
+Build, deploy, and manage modern web projects
+
+- 一站式
+- CI
+- HTTPS
+- Free
+
+[netlify.com](https://www.netlify.com)
+
+---
+
+# Netlify
+
+- 注册并登录账号
+- 新增站点：New site from Git
+- 关联 git 仓库：比如 github
+- 授权访问：Authorize netlify
+- 选择 git 仓库
+- 配置构建部署
+- 构建并部署
 
 ---
 
@@ -74,9 +112,17 @@ JavaScript + APIs + Markup
 - Hugo 生成 blog
 - Netlify 执行构建并部署
 
+
 ---
 
-# slides
+# 小结
+
+- staticgen: generator + template + theme
+- Netlify vs DMS
+
+---
+
+# Slides
 
 - ppt/pptx
 - keynote
@@ -96,6 +142,21 @@ markdown + jsx
 - jsx
 - [mdx](https://github.com/mdx-js/mdx)
 - [mdx-deck](https://github.com/jxnblk/mdx-deck)
+
+---
+
+# mdx-deck
+
+```bash
+# start the dev server
+mdx-deck [path-to-file]
+
+# build static HTML page with JS bundle
+mdx-deck build [path-to-file] -d [dest-folder]
+
+# Export PDF
+mdx-deck pdf [path-to-file] --out-file [dest-path-to-file]
+```
 
 ---
 
