@@ -1,0 +1,53 @@
+export { dark as theme } from 'mdx-deck/themes';
+
+# Flutter 渲染过程
+
+<div>By 贾超超</div>
+
+---
+
+# 什么是 Flutter
+
+---
+
+# Flutter 的架构图
+
+<img src={require("file-loader!./images/flutter-architecture.png")}/>
+
+---
+
+# 图形渲染原理
+
+skia => opengl => 显卡驱动 => 显卡硬件 => 显示器
+
+OpenGL/Vulkan/DirectX，图形库规范
+
+规范出现的目的是一样的，为了统一，
+
+和其他的规范（如 3GPP ，TCP/IP，JVM） 都一样的目的，为了统一， 在规范出现之前，各大显卡厂商各搞各的，AMD,Intel, Nvidia ，SGI ，每个厂商一套自己的 API，而且经常更新，应用开发者无法使用同一的 API 完成相同的功能，后来SGI 提出搞一套规范叫OpenGL，定义统一的API ，厂家实现，开发者调统一的API 就好了。
+
+OpenGL 是 Khronos Group 开发维护的一个规范，它主要为我们定义了用来操作图形和图片的一系列函数的 API，需要注意的是 OpenGL 本身并非 API。GPU 的硬件开发商则需要提供满足 OpenGL 规范的实现，这些实现通常被称为“驱动”，它们负责将 OpenGL 定义的 API 命令翻译为 GPU 指令。
+
+---
+
+# Flutter 自建渲染引擎的意义霜
+
+---
+
+# 跨平台的意义
+
+这就是我对 PWA 和 Flutter 感兴趣的原因
+
+---
+
+# 思考题
+
+为什么会存在跨平台？因为存在不同的平台。
+
+不同的东西何止平台，不同的硬件、不同的操作系统、不同的图形库、不同的浏览器、不同的 API 等等，简直是数不清楚。
+
+为什么会存在这么多的不同？
+
+---
+
+谢谢大家！

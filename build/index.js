@@ -18,7 +18,6 @@ const slideNames = files.reduce((acc, file) => {
 
   if (fileFullName && fileName) {
     acc.push(fileName);
-    console.log(file, fileFullName, fileName, acc);
     // 构建 slides 文件
     cp.exec(`mdx-deck build ${srcPath}/${fileFullName} -d ${distPath}/${fileName}/`);
   }
