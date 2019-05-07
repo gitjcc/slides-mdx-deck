@@ -4,8 +4,8 @@ const path = require('path');
 const ejs = require('ejs');
 const mkdirp = require('mkdirp');
 
-const srcPath = 'src';
-const distPath = 'dist';
+const srcPath = './src/slides';
+const distPath = './dist';
 
 const fileReg = /(?!.*\\).*\.mdx$/; // 文件名，带后缀
 const fileNameReg = /(?!.*\\).*(?=\.mdx$)/; // 文件名，不带后缀
