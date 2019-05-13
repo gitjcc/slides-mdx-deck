@@ -1,53 +1,188 @@
-export { dark as theme } from 'mdx-deck/themes';
+export { dark as theme } from '@mdx-deck/themes';
+import { Invert, Split, SplitRight, FullScreenCode, Horizontal } from '@mdx-deck/layouts';
+import { Head, Image, Notes, Appear, Steps } from '@mdx-deck/components';
 
-# Flutter 渲染过程
+# Flutter 原理之自建渲染
 
 <div>By 贾超超</div>
 
----
-
-# 什么是 Flutter
-
----
-
-# Flutter 的架构图
-
-<img src={require("file-loader!../images/flutter-architecture.png")}/>
+<Notes>
+  大家好，我是贾超超。今天我分享的主题是 Flutter 原理之自建渲染，主要内容是 Flutter 自建渲染的原理及自建渲染给 Flutter
+  带来的优势。
+</Notes>
 
 ---
 
-# 图形渲染原理
+## 什么是 Flutter
 
-skia => opengl => 显卡驱动 => 显卡硬件 => 显示器
-
-OpenGL/Vulkan/DirectX，图形库规范
-
-规范出现的目的是一样的，为了统一，
-
-和其他的规范（如 3GPP ，TCP/IP，JVM） 都一样的目的，为了统一， 在规范出现之前，各大显卡厂商各搞各的，AMD,Intel, Nvidia ，SGI ，每个厂商一套自己的 API，而且经常更新，应用开发者无法使用同一的 API 完成相同的功能，后来SGI 提出搞一套规范叫OpenGL，定义统一的API ，厂家实现，开发者调统一的API 就好了。
-
-OpenGL 是 Khronos Group 开发维护的一个规范，它主要为我们定义了用来操作图形和图片的一系列函数的 API，需要注意的是 OpenGL 本身并非 API。GPU 的硬件开发商则需要提供满足 OpenGL 规范的实现，这些实现通常被称为“驱动”，它们负责将 OpenGL 定义的 API 命令翻译为 GPU 指令。
+- Flutter 是 Google 推出的一款移动端应用 UI 框架。
+- 首次亮相于 2017 年 Google I/O 大会。
+- 主要的特点是跨平台和高性能。
 
 ---
 
-# Flutter 自建渲染引擎的意义霜
+## 移动端技术演进
+
+- iOS、Android
+- Cordova/PhoneGap、Ionic
+- React Native、Weex
+- QT mobile、Flutter
+
+实现功能、性能表现、开发效率
+
+<Notes>
+
+- 原生：开发效率
+- Hybrid & WebView 渲染：性能问题
+- Hybrid & 原生渲染：UI 一致性
+- 自建渲染 & 原生渲染：QT mobile 开发效率
+
+Flutter 在实现功能的基础，有着不错的开发效率和接近原生的性能表现。
+
+开发效率：Dart 语言 & 类似 React 的框架
+性能表现：Flutter 使用了自建渲染，在高性能方面有很大的想像空间。
+
+</Notes>
 
 ---
 
-# 跨平台的意义
+Flutter 架构分层
 
-这就是我对 PWA 和 Flutter 感兴趣的原因
+<img style={{ width: '70%' }} src={require('file-loader!../images/flutter-architecture2.png')} />
+
+<Notes>
+
+Flutter 架构的两层：Framework 框架层、Engine 引擎层。
+
+框架层：类比 React
+
+Animation：动画
+
+Gestures：手势
+
+Painting：提供绘制功能，封装了 Flutter Engine 的绘制接口，方便使用。
+
+Foundation：定义了非常基础的工具类和方法，供给其他所有层使用的。
+
+引擎层：
+
+- Skia：2D 图形库
+- Dart：Dart 运行时等
+- Text：文本渲染/字体渲染
+
+</Notes>
 
 ---
 
-# 思考题
+## Skia
 
-为什么会存在跨平台？因为存在不同的平台。
+Skia 是一个优秀的 2D 图形库，最初由 Skia 公司开发，后来被 Google 收购并开源。
 
-不同的东西何止平台，不同的硬件、不同的操作系统、不同的图形库、不同的浏览器、不同的 API 等等，简直是数不清楚。
+应用于 Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、Sublime Text 等项目。
 
-为什么会存在这么多的不同？
+[Skia_Graphics_Library](https://zh.wikipedia.org/wiki/Skia_Graphics_Library)
+
+<Notes>
+原生渲染
+
+- Android：Skia
+- iOS：Core Graphic
+
+Text：文本渲染/字体渲染/字体光栅化
+
+- Android 上：Skia 调用 FreeType 来渲染字体
+- iOS 上使用 Core Graphics 来渲染字体
+
+</Notes>
 
 ---
 
-谢谢大家！
+## 计算机绘图基本原理
+
+<img src={require('file-loader!../images/screen-display.png')} />
+
+---
+
+## CPU-GPU 工作流
+
+<img style={{ width: '150%' }} src={require('file-loader!../images/gpu-processing-flow.png')} />
+
+<Notes>
+
+- 将主存的处理数据复制到显存中
+- CPU 指令驱动 GPU
+- GPU 中的每个运算单元并行处理
+- GPU 将显存结果传回主存
+
+</Notes>
+
+---
+
+## 显示器工作原理
+
+- 同步信号：VSync、HSync
+
+<img style={{ width: '150%' }} src={require('file-loader!../images/screen-scan.png')} />
+
+---
+
+Flutter 图形渲染过程
+
+<img style={{ width: '55%' }} src={require('file-loader!../images/flutter-vsync.png')} />
+
+<Notes>UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器</Notes>
+
+---
+
+## Flutter 图形渲染过程
+
+UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器
+
+---
+
+## News
+
+2019 年 Google I/O 大会上 Google 发布了 Flutter 1.5 版本。
+
+<Split>
+
+[Flutter: A Portable UI Framework for Mobile, Web, Embedded, and Desktop](https://developers.googleblog.com/2019/05/Flutter-io19.html)
+
+<img style={{ width: '100%' }} src={require('file-loader!../images/flutter-portable.png')} />
+</Split>
+
+<Notes>
+
+经过两年的开发迭代，Flutter 也有了不小的变化，在最近的 2019 年 Google I/O 大会上 Google 发布了 Flutter 1.5 版本。
+
+</Notes>
+
+---
+
+Flutter 架构分层：Embedder 嵌入层
+
+<img src={require('file-loader!../images/flutter-architecture1.png')} />
+
+<Notes>
+
+Flutter 的架构主要分成三层：Framework 框架层、Engine 引擎层 和 Embedder 嵌入层。
+
+Flutter 自建渲染引擎的优势：由于使用了自建渲染，使得 Flutter 的平台相关性很低。平台（如 iOS、Android）只是提供一个画布，剩余的所有渲染相关的逻辑都在 Flutter 内部。
+使得 Flutter 很容易跨平台，并且具有很好的一致性。
+
+</Notes>
+
+---
+
+## 参考资源
+
+- [flutter 源码](https://github.com/flutter/flutter)
+- [flutter engine 源码](https://github.com/flutter/engine)
+- [flutter 英文官网](https://flutter.dev/)
+- [flutter 中文官网](https://flutter-io.cn/)
+- [flutterchina.club 自发社区](https://flutterchina.club/)
+- [news: Flutter 全平台可移植](https://developers.googleblog.com/2019/05/Flutter-io19.html)
+
+---
+
+# 谢谢大家！
