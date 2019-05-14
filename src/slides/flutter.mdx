@@ -2,7 +2,7 @@ export { dark as theme } from '@mdx-deck/themes';
 import { Invert, Split, SplitRight, FullScreenCode, Horizontal } from '@mdx-deck/layouts';
 import { Head, Image, Notes, Appear, Steps } from '@mdx-deck/components';
 
-# Flutter 原理之自建渲染
+# Flutter 引擎之自建渲染
 
 <div>By 贾超超</div>
 
@@ -80,7 +80,7 @@ Skia 是一个优秀的 2D 图形库，最初由 Skia 公司开发，后来被 G
 
 应用于 Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、Sublime Text 等项目。
 
-[Skia_Graphics_Library](https://zh.wikipedia.org/wiki/Skia_Graphics_Library)
+[Skia Graphics Library](https://skia.org/)
 
 <Notes>
 原生渲染
@@ -97,9 +97,24 @@ Text：文本渲染/字体渲染/字体光栅化
 
 ---
 
-## 计算机绘图基本原理
+Flutter 自建渲染
+
+<img style={{ width: '70%' }} src={require('file-loader!../images/flutter-skia-gpu.png')} />
+
+<Notes>UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器</Notes>
+
+---
+
+## 计算机绘图显示过程
 
 <img src={require('file-loader!../images/screen-display.png')} />
+
+<Notes>
+
+- 图中是图像输出的过程
+- 最初是没有 GPU 的，图像都是在 CPU 处理
+
+</Notes>
 
 ---
 
@@ -113,6 +128,8 @@ Text：文本渲染/字体渲染/字体光栅化
 - CPU 指令驱动 GPU
 - GPU 中的每个运算单元并行处理
 - GPU 将显存结果传回主存
+
+GPU 渲染管线：几何阶段、光栅化阶段
 
 </Notes>
 
@@ -130,13 +147,23 @@ Flutter 图形渲染过程
 
 <img style={{ width: '55%' }} src={require('file-loader!../images/flutter-vsync.png')} />
 
-<Notes>UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器</Notes>
+<Notes>
+
+  UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器
+
+  OpenGL：OpenGL/Vulkan/DirectX，图形库规范。规范出现的目的是一样的，为了统一。硬件差异，各搞各的，操作系统、浏览器。
+
+</Notes>
 
 ---
 
 ## Flutter 图形渲染过程
 
 UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显存） => 显示器
+
+<Notes>
+  至此，我们大概了解了 Flutter 自建渲染的原理。如果继续深入，有一个方向叫计算机图形学，大家有兴趣可以了解一下。
+</Notes>
 
 ---
 
@@ -153,13 +180,19 @@ UI => Layer Tree => Skia => OpenGL（显卡驱动） => 显卡硬件（GPU、显
 
 <Notes>
 
-经过两年的开发迭代，Flutter 也有了不小的变化，在最近的 2019 年 Google I/O 大会上 Google 发布了 Flutter 1.5 版本。
+  在做分享的时候，Flutter 又有了新的进展。
+
+  在前几天的 2019 年 Google I/O 大会上 Google 发布了 Flutter 1.5 版本。
+
+  距离 Flutter 首次亮相整整 2 年。
+
+  经过两年的开发迭代，Flutter 也有了不小的变化。
 
 </Notes>
 
 ---
 
-Flutter 架构分层：Embedder 嵌入层
+Flutter Portable：自建渲染(Skia) & 嵌入层(Embedder)
 
 <img src={require('file-loader!../images/flutter-architecture1.png')} />
 
