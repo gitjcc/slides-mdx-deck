@@ -14,8 +14,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "ejs": "^2.6.1",
-    "file-loader": "^3.0.1",
-    "mdx-deck": "^2.2.1"
+    "ejs": "^3.1.6",
+    "file-loader": "^6.2.0",
+    "mdx-deck": "^4.1.1"
   }
 }
